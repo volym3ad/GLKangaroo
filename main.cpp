@@ -24,6 +24,7 @@ Point *verticalVector = new Point(0, 2);
 void initialize() {
     for (int i=0; i<size; i++) {
         kangaroo[i] = new Point();
+        glasses[i] = new Point();
     }
 
     kangaroo[0]->setPoint(150, 500);
@@ -43,9 +44,7 @@ void initialize() {
     kangaroo[14]->setPoint(150, 50);
     kangaroo[15]->setPoint(500, 50);
 
-    for (int i=0; i<size; i++) {
-        glasses[i] = new Point();
-    }
+    // ---------------------------------
 
     glasses[0]->setPoint(300, 520);
     glasses[1]->setPoint(300, 530);
@@ -130,6 +129,13 @@ void move(int Key, int x, int y)
 
 }
 
+void erase() {
+    for (int i=0; i<size; i++) {
+        delete[] kangaroo[i];
+        delete[] glasses[i];
+    }
+}
+
 int main(int argc, char **argv)
 {
     initialize();
@@ -145,5 +151,6 @@ int main(int argc, char **argv)
     glutSpecialFunc(move);
     glutDisplayFunc(display);
     glutMainLoop();
-
+    
+    erase();
 }
